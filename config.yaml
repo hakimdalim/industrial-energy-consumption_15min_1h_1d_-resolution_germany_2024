@@ -1,0 +1,539 @@
+# # Energy Data Generation Configuration
+# # =================================
+
+# # Time Resolution Options
+# time_resolutions:
+#   15min: "15T"
+#   hourly: "H"
+#   daily: "D"
+
+# # Machine Configuration (9 industrial machines)
+# machines:
+#   CNC_Mill_1:
+#     type: "CNC"
+#     base_kWh: 1.2
+#     operations:
+#       - "Milling"
+#       - "Drilling"
+#       - "Polishing"
+  
+#   Injection_Molder_2:
+#     type: "Molder"
+#     base_kWh: 2.5
+#     operations:
+#       - "Injection_Molding"
+#       - "Cooling"
+  
+#   Laser_Cutter_3:
+#     type: "Cutter"
+#     base_kWh: 3.0
+#     operations:
+#       - "Cutting"
+#       - "Engraving"
+  
+#   Assembly_Bot_4:
+#     type: "Robot"
+#     base_kWh: 0.8
+#     operations:
+#       - "Assembly"
+#       - "Testing"
+  
+#   Industrial_Oven_5:
+#     type: "Thermal"
+#     base_kWh: 5.0
+#     operations:
+#       - "Heat_Treatment"
+#       - "Drying"
+  
+#   Packaging_Line_6:
+#     type: "Conveyor"
+#     base_kWh: 1.0
+#     operations:
+#       - "Packaging"
+#       - "Labeling"
+  
+#   Welding_Cell_7:
+#     type: "Welder"
+#     base_kWh: 4.0
+#     operations:
+#       - "Welding"
+#       - "Brazing"
+  
+#   Painting_Booth_8:
+#     type: "Sprayer"
+#     base_kWh: 2.0
+#     operations:
+#       - "Painting"
+#       - "Curing"
+  
+#   Hydraulic_Press_9:
+#     type: "Press"
+#     base_kWh: 3.5
+#     operations:
+#       - "Stamping"
+#       - "Forming"
+
+# # Operations Configuration (15 operations with power ranges)
+# operations:
+#   Milling:
+#     kWh_range: [8, 15]
+#     noise: 0.1
+  
+#   Drilling:
+#     kWh_range: [5, 10]
+#     noise: 0.2
+  
+#   Polishing:
+#     kWh_range: [3, 7]
+#     noise: 0.1
+  
+#   Injection_Molding:
+#     kWh_range: [10, 20]
+#     noise: 0.3
+  
+#   Cutting:
+#     kWh_range: [12, 25]
+#     noise: 0.2
+  
+#   Assembly:
+#     kWh_range: [2, 5]
+#     noise: 0.05
+  
+#   Heat_Treatment:
+#     kWh_range: [15, 30]
+#     noise: 0.4
+  
+#   Packaging:
+#     kWh_range: [1, 4]
+#     noise: 0.1
+  
+#   Welding:
+#     kWh_range: [20, 40]
+#     noise: 0.5
+  
+#   Painting:
+#     kWh_range: [5, 12]
+#     noise: 0.2
+  
+#   Stamping:
+#     kWh_range: [10, 18]
+#     noise: 0.3
+  
+#   Testing:
+#     kWh_range: [1, 3]
+#     noise: 0.05
+  
+#   Cooling:
+#     kWh_range: [4, 8]
+#     noise: 0.1
+  
+#   Drying:
+#     kWh_range: [6, 14]
+#     noise: 0.2
+  
+#   Engraving:
+#     kWh_range: [4, 8]
+#     noise: 0.15
+  
+#   Brazing:
+#     kWh_range: [8, 15]
+#     noise: 0.2
+  
+#   Curing:
+#     kWh_range: [3, 6]
+#     noise: 0.1
+  
+#   Forming:
+#     kWh_range: [7, 12]
+#     noise: 0.2
+  
+#   Labeling:
+#     kWh_range: [0.5, 2]
+#     noise: 0.05
+
+# # Shift Configuration (3 shifts)
+# shifts:
+#   Morning:
+#     hours: [6, 14]
+#     label: "Early Shift (6AM-2PM)"
+  
+#   Afternoon:
+#     hours: [14, 22]
+#     label: "Day Shift (2PM-10PM)"
+  
+#   Night:
+#     hours: [22, 6]
+#     label: "Night Shift (10PM-6AM)"
+
+# # German Public Holidays 2024
+# public_holidays:
+#   - "2024-01-01"  # New Year's Day
+#   - "2024-03-29"  # Good Friday
+#   - "2024-04-01"  # Easter Monday
+#   - "2024-05-01"  # Labor Day
+#   - "2024-05-09"  # Ascension Day
+#   - "2024-05-20"  # Whit Monday
+#   - "2024-10-03"  # German Unity Day
+#   - "2024-12-25"  # Christmas Day
+#   - "2024-12-26"  # Boxing Day
+
+# # Seasonal Adjustments
+# seasonal_trends:
+#   Winter:
+#     base_load_factor: 1.2  # 20% higher base load (HVAC usage)
+#     operations_factor: 0.9  # 10% lower operations
+  
+#   Summer:
+#     base_load_factor: 1.1  # 10% higher base load (cooling)
+#     operations_factor: 1.0  # Normal operations
+  
+#   Spring_Fall:
+#     base_load_factor: 1.0  # Normal base load
+#     operations_factor: 1.0  # Normal operations
+
+# # Fault Simulation Parameters
+# fault_simulation:
+#   failure_rate: 0.001  # 0.1% chance of failure per time period
+#   downtime_hours:
+#     min: 1
+#     max: 24
+#   failure_kWh: 0.0  # Energy consumption during failure
+
+# # Data Generation Settings
+# data_generation:
+#   year: 2024
+#   weekend_activity_factor:
+#     min: 0.1
+#     max: 0.5
+#   holiday_activity_factor:
+#     min: 0.1
+#     max: 0.5
+#   daily_operation_hours:
+#     normal: 16
+#     reduced: 8
+
+# # Visualization Settings
+# visualization:
+#   default_machine: "CNC_Mill_1"
+#   default_days_to_plot: 7
+#   yearly_plot_enabled: true
+#   figure_size:
+#     width: 15
+#     height: 12
+#     yearly_width: 20
+#     yearly_height: 8
+#   plot_dpi: 300
+#   colors:
+#     resolution_15min: "blue"
+#     resolution_hourly: "green"
+#     resolution_daily: "red"
+#     yearly_daily: "darkblue"
+#   heatmap_colormap: "YlOrRd"
+
+# # File Output Settings
+# file_output:
+#   hdf5_filename_template: "energy_{year}_advanced_{resolution}.h5"
+#   metadata_filename_template: "energy_{year}_metadata_{resolution}.json"
+#   plot_filename_template: "{machine}_{plot_type}_{resolution}.png"
+#   bbox_inches: "tight"
+#   export_metadata: true
+#   metadata_format: "json"  # json, yaml, or both
+
+# # Data Validation Settings
+# validation:
+#   enabled: true
+#   check_negative_values: true
+#   check_missing_timestamps: true
+#   check_shift_consistency: true
+#   check_seasonal_patterns: true
+#   energy_range_validation:
+#     min_kwh: 0.0
+#     max_kwh: 1000.0  # Maximum reasonable energy consumption
+#   statistical_checks:
+#     outlier_detection: true
+#     outlier_threshold: 3.0  # Standard deviations
+#   data_quality_report: true
+# Energy Data Generation Configuration
+# =================================
+# Optimized for exactly 9 machines and 15 operations
+
+# Time Resolution Options
+time_resolutions:
+  15min: "15T"
+  hourly: "H"
+  daily: "D"
+
+# Machine Configuration (exactly 9 industrial machines)
+machines:
+  CNC_Mill_1:
+    type: "CNC"
+    base_kWh: 1.2
+    operations:
+      - "Milling"
+      - "Drilling"
+  
+  Injection_Molder_2:
+    type: "Molder"
+    base_kWh: 2.5
+    operations:
+      - "Injection_Molding"
+      - "Cooling"
+  
+  Laser_Cutter_3:
+    type: "Cutter"
+    base_kWh: 3.0
+    operations:
+      - "Cutting"
+      - "Engraving"
+  
+  Assembly_Robot_4:
+    type: "Robot"
+    base_kWh: 0.8
+    operations:
+      - "Assembly"
+      - "Testing"
+  
+  Industrial_Oven_5:
+    type: "Thermal"
+    base_kWh: 5.0
+    operations:
+      - "Heat_Treatment"
+      - "Drying"
+  
+  Packaging_Line_6:
+    type: "Conveyor"
+    base_kWh: 1.0
+    operations:
+      - "Packaging"
+  
+  Welding_Cell_7:
+    type: "Welder"
+    base_kWh: 4.0
+    operations:
+      - "Welding"
+  
+  Painting_Booth_8:
+    type: "Sprayer"
+    base_kWh: 2.0
+    operations:
+      - "Painting"
+  
+  Hydraulic_Press_9:
+    type: "Press"
+    base_kWh: 3.5
+    operations:
+      - "Stamping"
+      - "Quality_Control"
+
+# Operations Configuration (exactly 15 operations with realistic power ranges)
+operations:
+  # Machining Operations (3)
+  Milling:
+    kWh_range: [8, 15]
+    noise: 0.1
+    description: "CNC milling operations"
+  
+  Drilling:
+    kWh_range: [5, 10]
+    noise: 0.15
+    description: "Precision drilling operations"
+  
+  Cutting:
+    kWh_range: [12, 25]
+    noise: 0.2
+    description: "Laser cutting operations"
+  
+  # Manufacturing Operations (4)
+  Injection_Molding:
+    kWh_range: [10, 20]
+    noise: 0.25
+    description: "Plastic injection molding"
+  
+  Assembly:
+    kWh_range: [2, 5]
+    noise: 0.1
+    description: "Automated assembly operations"
+  
+  Welding:
+    kWh_range: [20, 40]
+    noise: 0.3
+    description: "Industrial welding operations"
+  
+  Stamping:
+    kWh_range: [15, 25]
+    noise: 0.2
+    description: "Hydraulic stamping and forming"
+  
+  # Processing Operations (4)
+  Heat_Treatment:
+    kWh_range: [25, 45]
+    noise: 0.15
+    description: "High-temperature heat treatment"
+  
+  Cooling:
+    kWh_range: [4, 8]
+    noise: 0.1
+    description: "Cooling and temperature control"
+  
+  Drying:
+    kWh_range: [6, 14]
+    noise: 0.2
+    description: "Industrial drying processes"
+  
+  Painting:
+    kWh_range: [8, 16]
+    noise: 0.2
+    description: "Spray painting and coating"
+  
+  # Finishing Operations (4)
+  Engraving:
+    kWh_range: [4, 8]
+    noise: 0.15
+    description: "Laser engraving and marking"
+  
+  Packaging:
+    kWh_range: [2, 6]
+    noise: 0.1
+    description: "Automated packaging operations"
+  
+  Testing:
+    kWh_range: [1, 4]
+    noise: 0.05
+    description: "Quality testing and inspection"
+  
+  Quality_Control:
+    kWh_range: [2, 5]
+    noise: 0.08
+    description: "Final quality control checks"
+
+# Shift Configuration (3 shifts)
+shifts:
+  Morning:
+    hours: [6, 14]
+    label: "Morning Shift (6AM-2PM)"
+  
+  Afternoon:
+    hours: [14, 22]
+    label: "Afternoon Shift (2PM-10PM)"
+  
+  Night:
+    hours: [22, 6]
+    label: "Night Shift (10PM-6AM)"
+
+# German Public Holidays 2024
+public_holidays:
+  - "2024-01-01"  # New Year's Day
+  - "2024-03-29"  # Good Friday
+  - "2024-04-01"  # Easter Monday
+  - "2024-05-01"  # Labor Day
+  - "2024-05-09"  # Ascension Day
+  - "2024-05-20"  # Whit Monday
+  - "2024-10-03"  # German Unity Day
+  - "2024-12-25"  # Christmas Day
+  - "2024-12-26"  # Boxing Day
+
+# Seasonal Adjustments
+seasonal_trends:
+  Winter:
+    base_load_factor: 1.2  # 20% higher base load (HVAC usage)
+    operations_factor: 0.9  # 10% lower operations
+  
+  Summer:
+    base_load_factor: 1.1  # 10% higher base load (cooling)
+    operations_factor: 1.0  # Normal operations
+  
+  Spring_Fall:
+    base_load_factor: 1.0  # Normal base load
+    operations_factor: 1.0  # Normal operations
+
+# Fault Simulation Parameters
+fault_simulation:
+  failure_rate: 0.001  # 0.1% chance of failure per time period
+  downtime_hours:
+    min: 1
+    max: 24
+  failure_kWh: 0.0  # Energy consumption during failure
+
+# Data Generation Settings
+data_generation:
+  year: 2024
+  weekend_activity_factor:
+    min: 0.1
+    max: 0.5
+  holiday_activity_factor:
+    min: 0.1
+    max: 0.5
+  daily_operation_hours:
+    normal: 16
+    reduced: 8
+
+# Operation Distribution Strategy (maintains realism)
+operation_distribution:
+  # High-frequency operations (run more often)
+  high_frequency:
+    - "Milling"
+    - "Assembly" 
+    - "Packaging"
+    - "Testing"
+    - "Quality_Control"
+  
+  # Medium-frequency operations
+  medium_frequency:
+    - "Drilling"
+    - "Cutting"
+    - "Injection_Molding"
+    - "Cooling"
+    - "Engraving"
+  
+  # Low-frequency operations (energy intensive, run less often)
+  low_frequency:
+    - "Welding"
+    - "Heat_Treatment"
+    - "Drying"
+    - "Painting"
+    - "Stamping"
+
+# Visualization Settings
+visualization:
+  default_machine: "CNC_Mill_1"
+  default_days_to_plot: 7
+  yearly_plot_enabled: true
+  figure_size:
+    width: 15
+    height: 12
+    yearly_width: 20
+    yearly_height: 8
+  plot_dpi: 300
+  colors:
+    resolution_15min: "blue"
+    resolution_hourly: "green"
+    resolution_daily: "red"
+    yearly_daily: "darkblue"
+  heatmap_colormap: "YlOrRd"
+
+# File Output Settings
+file_output:
+  hdf5_filename_template: "energy_{year}_9machines_15ops_{resolution}.h5"
+  metadata_filename_template: "energy_{year}_metadata_9m15o_{resolution}.json"
+  plot_filename_template: "{machine}_{plot_type}_{resolution}.png"
+  bbox_inches: "tight"
+  export_metadata: true
+  metadata_format: "json"
+
+# Data Validation Settings
+validation:
+  enabled: true
+  check_negative_values: true
+  check_missing_timestamps: true
+  check_shift_consistency: true
+  check_seasonal_patterns: true
+  # Validate exact counts
+  expected_machines: 9
+  expected_operations: 15
+  energy_range_validation:
+    min_kwh: 0.0
+    max_kwh: 1000.0
+  statistical_checks:
+    outlier_detection: true
+    outlier_threshold: 3.0
+  data_quality_report: true
